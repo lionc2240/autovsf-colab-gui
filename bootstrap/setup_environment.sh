@@ -1,15 +1,15 @@
 #!/bin/bash
 # setup_environment.sh — AutoVSF Workstation System & Environment Installer
-set -e
+export DEBIAN_FRONTEND=noninteractive
+export TZ=Etc/UTC
 
-GREEN='\033[0;32m'
-CYAN='\033[0;36m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+# Pre-select English (US) keyboard layout for debconf
+echo "keyboard-configuration keyboard-configuration/layoutcode string us" | sudo debconf-set-selections 2>/dev/null || true
+echo "keyboard-configuration keyboard-configuration/modelcode string pc105" | sudo debconf-set-selections 2>/dev/null || true
 
 echo -e "${CYAN}[1/5] Updating package list & installing XFCE / noVNC desktop dependencies...${NC}"
 sudo apt-get update -qq -y || true
-sudo apt-get install -y \
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
     xvfb xfce4 xfce4-goodies x11vnc novnc net-tools \
     ffmpeg libxss1 libnss3 libxtst6 libxrender1 libxcomposite1 \
     libasound2 libdbus-glib-1-2 libnuma1 libgtk-3-0 python3-tk python3-pip
