@@ -60,9 +60,22 @@ class AutoVSFApp(tk.Tk):
         self.notebook.add(self.tab_settings, text=" Settings ")
 
     def _build_process_tab(self):
+        # YouTube URL Selection
+        f_yt = tk.Frame(self.tab_process, bg="#222222")
+        f_yt.pack(fill=tk.X, padx=15, pady=10)
+
+        tk.Label(f_yt, text="YouTube Link:", fg="#FFD700", bg="#222222", font=("Helvetica", 11, "bold")).pack(
+            side=tk.LEFT, padx=5
+        )
+        self.yt_var = tk.StringVar()
+        tk.Entry(f_yt, textvariable=self.yt_var, font=("Consolas", 11)).pack(
+            side=tk.LEFT, fill=tk.X, expand=True, padx=8
+        )
+        ttk.Button(f_yt, text="Download YouTube", command=self._download_yt).pack(side=tk.LEFT, padx=5)
+
         # Video File Selection
         f_file = tk.Frame(self.tab_process, bg="#222222")
-        f_file.pack(fill=tk.X, padx=15, pady=15)
+        f_file.pack(fill=tk.X, padx=15, pady=10)
 
         tk.Label(f_file, text="Select Video File:", fg="#FFFFFF", bg="#222222", font=("Helvetica", 11, "bold")).pack(
             side=tk.LEFT, padx=5
@@ -118,6 +131,26 @@ class AutoVSFApp(tk.Tk):
             command=self._enqueue_job,
         )
         btn_submit.pack(fill=tk.X, padx=15, pady=20)
+
+    def _download_yt(self):
+        url = self.yt_var.get().strip()
+        if not url:
+            messagebox.showerror("Error", "Please enter a valid YouTube URL.")
+            return
+
+        def run_dl():
+            try:
+                from autovsf_core.engine.youtube.downloader import YouTubeDownloader
+                downloader = YouTubeDownloader()
+                vpath = downloader.download_video(url, min_height=720)
+                self.video_var.set(vpath)
+                self.selected_video_path = vpath
+                messagebox.showinfo("Success", f"Downloaded YouTube Video (720p+):\n{vpath}")
+            except Exception as e:
+                messagebox.showerror("Error", f"YouTube Download Failed:\n{str(e)}")
+
+        import threading
+        threading.Thread(target=run_dl, daemon=True).start()
 
     def _browse_video(self):
         f = filedialog.askopenfilename(

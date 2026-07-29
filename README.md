@@ -9,11 +9,12 @@
 
 ## Tính năng nổi bật
 
-- **Giao diện GUI Workstation trực quan**: Bộ chọn vùng crop phụ đề cho phép kéo thả 4 đường kẻ trực tiếp trên khung hình video, tua frame theo thời gian thực và quản lý hồ sơ (profile) crop.
-- **Kiến trúc mô-đun hóa độc lập**: Thư viện Python `autovsf_core` xử lý tiến trình VideoSubFinder, Google Drive OCR và dịch phụ đề AI độc lập hoàn toàn với giao diện đồ họa.
-- **Quản lý hàng chờ đa video (Multi-Video Queue)**: Trình quản lý `QueueManager` và luồng chạy ngầm `JobWorker` cho phép đưa nhiều video vào hàng chờ xử lý liên hoàn.
-- **Theo dõi tiến độ thời gian thực**: Đếm số lượng ảnh trích xuất (`Watchdog`), cập nhật tiến độ theo %, hiển thị chi tiết thời gian hoàn thành dự kiến (ETA).
-- **Bootstrap tinh gọn & tự động 100%**: Notebook Colab 3 cell (`bootstrap/colab_bootstrap.ipynb`) tự động cài đặt môi trường và mở Web Desktop mà không yêu cầu tương tác thủ công.
+- **Giải phóng Cell ngầm (Non-blocking Bootstrap)**: Cài đặt môi trường ngầm giải phóng ô Cell 2 trong < 2 giây.
+- **Tải ngầm YouTube đa luồng (`yt-dlp Engine`)**: Tự động tải ngầm các video với chất lượng tối thiểu 720p và giữ nguyên tiêu đề video gốc (`%(title)s.%(ext)s`).
+- **2 Cổng kết nối trực quan (2 Workspace Portals)**: Xuất 2 đường link trực tiếp trên Colab (`Terminal WebUI - ttyd` và `Desktop GUI - noVNC`).
+- **Tích hợp YouTube linh hoạt ở 2 nơi (Dual-Integration)**: Nhập link YouTube trực tiếp trên Cell Notebook (Bước 4) hoặc dán link trên ứng dụng Desktop GUI.
+- **Giao diện GUI Workstation trực quan**: Bộ chọn vùng crop phụ đề kéo thả 4 đường kẻ màu trên khung hình video, tua frame theo thời gian thực và quản lý crop profile.
+- **Quản lý hàng chờ đa video (Multi-Video Queue)**: `QueueManager` và luồng chạy ngầm `JobWorker` xử lý nhiều video song song hoặc nối tiếp tự động.
 
 ---
 
@@ -29,7 +30,7 @@ autovsf-colab-gui/
 ├── autovsf_core/                # Thư viện lõi xử lý độc lập
 │   ├── config/                  # Quản lý cài đặt & phát hiện môi trường
 │   ├── domain/                  # Models (Job, CropProfile, Status)
-│   ├── engine/                  # Động cơ VSF, Drive OCR, AI Translation
+│   ├── engine/                  # Động cơ VSF, Drive OCR, AI Translation, YouTube Downloader
 │   ├── pipeline/                # Định nghĩa Task và luồng Pipeline
 │   └── queue/                   # Hàng chờ QueueManager & Worker Pool
 │
@@ -47,8 +48,11 @@ autovsf-colab-gui/
 
 1. Nhấp vào nút **Open in Colab** ở trên hoặc mở file [`bootstrap/colab_bootstrap.ipynb`](https://colab.research.google.com/github/lionc2240/autovsf-colab-gui/blob/main/bootstrap/colab_bootstrap.ipynb) trong Google Colab.
 2. Chạy **Bước 1** để kết nối với Google Drive.
-3. Chạy **Bước 2** để cài đặt môi trường Ubuntu Desktop & phụ thuộc.
-4. Chạy **Bước 3** để khởi chạy Web Desktop. Mở đường link `noVNC` được in ra ở cuối cell để truy cập ứng dụng AutoVSF!
+3. Chạy **Bước 2** để khởi tạo cài đặt môi trường ngầm (Cell giải phóng ngay trong 2s).
+4. Chạy **Bước 3** để bật 2 Cổng kết nối:
+   - **👉 LINK 1 [TERMINAL WEBUI (ttyd)]**: Cửa sổ dòng lệnh Linux trên Web.
+   - **👉 LINK 2 [DESKTOP GUI (noVNC)]**: Màn hình Ubuntu Desktop với ứng dụng AutoVSF.
+5. *(Tùy chọn)* Chạy **Bước 4** nếu muốn dán link YouTube và tự động xử lý ngầm trực tiếp trên Cell.
 
 ---
 
