@@ -50,8 +50,8 @@ autovsf-colab-gui/
 2. Chạy **Bước 1** để kết nối với Google Drive.
 3. Chạy **Bước 2** để khởi tạo cài đặt môi trường ngầm (Cell giải phóng ngay trong 2s).
 4. Chạy **Bước 3** để bật 2 Cổng kết nối:
-   - **👉 LINK 1 [TERMINAL WEBUI (ttyd)]**: Cửa sổ dòng lệnh Linux trên Web.
-   - **👉 LINK 2 [DESKTOP GUI (noVNC)]**: Màn hình Ubuntu Desktop với ứng dụng AutoVSF.
+   - **LINK 1 [TERMINAL WEBUI (ttyd)]**: Cửa sổ dòng lệnh Linux trên Web.
+   - **LINK 2 [DESKTOP GUI (noVNC)]**: Màn hình Ubuntu Desktop với ứng dụng AutoVSF.
 5. *(Tùy chọn)* Chạy **Bước 4** nếu muốn dán link YouTube và tự động xử lý ngầm trực tiếp trên Cell.
 
 ---
