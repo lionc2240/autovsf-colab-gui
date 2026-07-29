@@ -1,8 +1,9 @@
 # AutoVSF Workstation Platform v2.0
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lionc2240/autovsf-colab-gui/blob/main/bootstrap/colab_bootstrap.ipynb)
+
 > **Next-Generation Subtitle Extraction & AI Translation Platform**  
-> Optimized for Ubuntu Desktop (XFCE / LXQt + noVNC + Xvfb) inside Google Colab.  
-> **Shortcut:** [Open in Google Colab](https://colab.research.google.com/github/lionc2240/autovsf-colab-gui/blob/main/bootstrap/colab_bootstrap.ipynb)
+> Optimized for Ubuntu Desktop (XFCE / LXQt + noVNC + Xvfb) inside Google Colab.
 
 ---
 
@@ -44,7 +45,9 @@ autovsf-colab-gui/
 
 ## Quick Start on Google Colab
 
-1. Open [`bootstrap/colab_bootstrap.ipynb`](https://colab.research.google.com/github/lionc2240/autovsf-colab-gui/blob/main/bootstrap/colab_bootstrap.ipynb) in Google Colab.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lionc2240/autovsf-colab-gui/blob/main/bootstrap/colab_bootstrap.ipynb)
+
+1. Click the Colab logo above to open `bootstrap/colab_bootstrap.ipynb` in Google Colab.
 2. Run **Step 1** to mount Google Drive.
 3. Run **Step 2** to install system dependencies.
 4. Run **Step 3** to launch the Ubuntu Workstation. Open the printed `noVNC` URL to access the AutoVSF Desktop Application!
