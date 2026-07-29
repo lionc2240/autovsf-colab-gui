@@ -24,7 +24,7 @@ class AutoVSFApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("🎬 AutoVSF Workstation Platform v2.0")
+        self.title("AutoVSF Workstation Platform v2.0")
         self.geometry("1100x700")
         self.configure(bg="#111111")
 
@@ -36,7 +36,7 @@ class AutoVSFApp(tk.Tk):
         header.pack(fill=tk.X)
         tk.Label(
             header,
-            text="🎬 AutoVSF Workstation Platform",
+            text="AutoVSF Workstation Platform",
             font=("Helvetica", 14, "bold"),
             fg="#00FFFF",
             bg="#222222",
@@ -48,16 +48,16 @@ class AutoVSFApp(tk.Tk):
 
         # Tab 1: Video & Crop Selection
         self.tab_process = tk.Frame(self.notebook, bg="#222222")
-        self.notebook.add(self.tab_process, text=" ✂️ Video & Subtitle Crop ")
+        self.notebook.add(self.tab_process, text=" Video & Subtitle Crop ")
         self._build_process_tab()
 
         # Tab 2: Queue Monitor
         self.tab_queue = JobDashboardView(self.notebook)
-        self.notebook.add(self.tab_queue, text=" 📊 Queue & Worker Monitor ")
+        self.notebook.add(self.tab_queue, text=" Queue & Worker Monitor ")
 
         # Tab 3: Settings
         self.tab_settings = SettingsView(self.notebook)
-        self.notebook.add(self.tab_settings, text=" ⚙️ Settings ")
+        self.notebook.add(self.tab_settings, text=" Settings ")
 
     def _build_process_tab(self):
         # Video File Selection
@@ -71,7 +71,7 @@ class AutoVSFApp(tk.Tk):
         tk.Entry(f_file, textvariable=self.video_var, font=("Consolas", 11)).pack(
             side=tk.LEFT, fill=tk.X, expand=True, padx=8
         )
-        ttk.Button(f_file, text="📁 Browse Video...", command=self._browse_video).pack(side=tk.LEFT, padx=5)
+        ttk.Button(f_file, text="Browse Video...", command=self._browse_video).pack(side=tk.LEFT, padx=5)
 
         # Crop Profile Status & Launch Selector
         f_crop = tk.LabelFrame(
@@ -88,7 +88,7 @@ class AutoVSFApp(tk.Tk):
         )
         self.crop_lbl.pack(side=tk.LEFT, padx=10, pady=10)
 
-        ttk.Button(f_crop, text="✨ Open Visual Crop Selector...", command=self._open_crop_selector).pack(
+        ttk.Button(f_crop, text="Open Visual Crop Selector...", command=self._open_crop_selector).pack(
             side=tk.RIGHT, padx=10, pady=10
         )
 
@@ -110,7 +110,7 @@ class AutoVSFApp(tk.Tk):
         # Enqueue Button
         btn_submit = tk.Button(
             self.tab_process,
-            text="🚀 ENQUEUE PROCESSING JOB",
+            text="ENQUEUE PROCESSING JOB",
             font=("Helvetica", 12, "bold"),
             bg="#00AA00",
             fg="#FFFFFF",

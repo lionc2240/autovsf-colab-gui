@@ -16,7 +16,7 @@ class JobDashboardView(tk.Frame):
 
         lbl = tk.Label(
             self,
-            text="📊 Processing Queue & Worker Monitor",
+            text="Processing Queue & Worker Monitor",
             font=("Helvetica", 12, "bold"),
             fg="#00FFFF",
             bg="#222222",

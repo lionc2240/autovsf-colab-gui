@@ -37,7 +37,7 @@ class CropSelectorWindow:
         self.dragging = None
 
         self.win = tk.Toplevel(master)
-        self.win.title("✨ AutoVSF — Interactive Crop Selector")
+        self.win.title("AutoVSF — Interactive Crop Selector")
         self.win.geometry("1000x760")
 
         # Main Canvas
@@ -78,7 +78,7 @@ class CropSelectorWindow:
                 fg=color,
             ).pack(side=tk.LEFT, padx=1)
 
-        ttk.Button(pbar, text="✅ Confirm & Save Crop", command=self._confirm).pack(side=tk.LEFT, padx=14)
+        ttk.Button(pbar, text="Confirm & Save Crop", command=self._confirm).pack(side=tk.LEFT, padx=14)
 
         # Profile Saving Input
         tk.Label(pbar, text="Profile Name:", fg="#AAAAAA", bg="#222222", font=("Helvetica", 9)).pack(
@@ -88,7 +88,7 @@ class CropSelectorWindow:
         tk.Entry(pbar, textvariable=self.profile_name_var, width=12, font=("Consolas", 10)).pack(
             side=tk.LEFT, padx=2
         )
-        ttk.Button(pbar, text="💾 Save Profile", command=self._save_profile).pack(side=tk.LEFT, padx=4)
+        ttk.Button(pbar, text="Save Profile", command=self._save_profile).pack(side=tk.LEFT, padx=4)
 
         # Video Frame Timeline Control Bar
         tbar = tk.Frame(self.win)
@@ -97,7 +97,7 @@ class CropSelectorWindow:
         self.slider.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=4)
         self.time_lbl = tk.Label(tbar, text="00:00:00.000", font=("Consolas", 10))
         self.time_lbl.pack(side=tk.LEFT, padx=4)
-        ttk.Button(tbar, text="▶▶ +1s", width=7, command=self._seek_plus_1s).pack(side=tk.LEFT, padx=4)
+        ttk.Button(tbar, text="+1s", width=7, command=self._seek_plus_1s).pack(side=tk.LEFT, padx=4)
 
         self.win.after(50, self._load_video)
 

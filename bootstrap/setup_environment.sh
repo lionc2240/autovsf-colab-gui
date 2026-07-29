@@ -67,6 +67,14 @@ EOF
 
 chmod +x "$VSF_DIR/VideoSubFinderWXW" "$VSF_DIR/VideoSubFinderWXW.run" 2>/dev/null || true
 
+echo -e "${CYAN}[4/5] Installing AutoVSF Desktop Shortcut...${NC}"
+mkdir -p "$HOME/Desktop" /usr/share/applications/ 2>/dev/null || true
+if [ -f "bootstrap/AutoVSF.desktop" ]; then
+    cp "bootstrap/AutoVSF.desktop" "$HOME/Desktop/AutoVSF.desktop"
+    sudo cp "bootstrap/AutoVSF.desktop" "/usr/share/applications/AutoVSF.desktop" 2>/dev/null || true
+    chmod +x "$HOME/Desktop/AutoVSF.desktop" 2>/dev/null || true
+fi
+
 echo -e "${GREEN}==========================================================="
 echo -e "[SUCCESS] AutoVSF Workstation Environment Setup Complete!"
 echo -e "===========================================================${NC}"

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=AutoVSF Workstation
+Comment=AutoVSF Subtitle Extraction and AI Translation Workstation
+Exec=python3 -m autovsf_gui.app
+Icon=video-x-generic
+Terminal=false
+Categories=Utility;AudioVideo;Video;
