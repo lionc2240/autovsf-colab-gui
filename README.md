@@ -2,40 +2,40 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lionc2240/autovsf-colab-gui/blob/main/bootstrap/colab_bootstrap.ipynb)
 
-> **Next-Generation Subtitle Extraction & AI Translation Platform**  
-> Optimized for Ubuntu Desktop (XFCE / LXQt + noVNC + Xvfb) inside Google Colab.
+> **Nền tảng bóc tách và dịch thuật phụ đề phim tự động thế hệ mới**  
+> Tối ưu hóa cho môi trường Ubuntu Desktop (XFCE / LXQt + noVNC + Xvfb) chạy trực tiếp trên Google Colab.
 
 ---
 
-## Key Features
+## Tính năng nổi bật
 
-- **GUI-First Workstation Experience**: Interactive video crop selector with visual draggable overlay lines, frame timeline seeking, and crop profile management.
-- **Decoupled Architecture**: `autovsf_core` python library handles pipeline execution, VSF runner, Drive OCR, and AI subtitle translation independently from UI.
-- **Multi-Video Queue & Worker Pool**: Thread-safe `QueueManager` & background `JobWorker` pool process multiple queued video jobs asynchronously.
-- **Real-time Monitoring**: Frame-by-frame progress, Watchdog image count tracker, and ETA calculations.
-- **Minimal Notebook Bootstrap**: Clean 3-cell Colab notebook (`bootstrap/colab_bootstrap.ipynb`) that initializes XFCE/LXQt/noVNC and launches the workstation app.
+- **Giao diện GUI Workstation trực quan**: Bộ chọn vùng crop phụ đề cho phép kéo thả 4 đường kẻ trực tiếp trên khung hình video, tua frame theo thời gian thực và quản lý hồ sơ (profile) crop.
+- **Kiến trúc mô-đun hóa độc lập**: Thư viện Python `autovsf_core` xử lý tiến trình VideoSubFinder, Google Drive OCR và dịch phụ đề AI độc lập hoàn toàn với giao diện đồ họa.
+- **Quản lý hàng chờ đa video (Multi-Video Queue)**: Trình quản lý `QueueManager` và luồng chạy ngầm `JobWorker` cho phép đưa nhiều video vào hàng chờ xử lý liên hoàn.
+- **Theo dõi tiến độ thời gian thực**: Đếm số lượng ảnh trích xuất (`Watchdog`), cập nhật tiến độ theo %, hiển thị chi tiết thời gian hoàn thành dự kiến (ETA).
+- **Bootstrap tinh gọn & tự động 100%**: Notebook Colab 3 cell (`bootstrap/colab_bootstrap.ipynb`) tự động cài đặt môi trường và mở Web Desktop mà không yêu cầu tương tác thủ công.
 
 ---
 
-## Project Architecture
+## Cấu trúc thư mục dự án
 
 ```
 autovsf-colab-gui/
-├── bootstrap/                   # Bootstrap Layer
-│   ├── AutoVSF.desktop          # Desktop shortcut launcher
-│   ├── colab_bootstrap.ipynb    # Launcher notebook
-│   └── setup_environment.sh     # Dependencies installer
+├── bootstrap/                   # Tầng khởi tạo hệ thống
+│   ├── AutoVSF.desktop          # File lối tắt ứng dụng trên Desktop
+│   ├── colab_bootstrap.ipynb    # Notebook khởi chạy Colab
+│   └── setup_environment.sh     # Script cài đặt môi trường tự động
 │
-├── autovsf_core/                # Independent Core Engine Library
-│   ├── config/                  # Settings & environment detection
-│   ├── domain/                  # Job, CropProfile, Status models
-│   ├── engine/                  # VSF, OCR, Translation engines
-│   ├── pipeline/                # Task definitions & pipeline runner
-│   └── queue/                   # QueueManager & Worker pool
+├── autovsf_core/                # Thư viện lõi xử lý độc lập
+│   ├── config/                  # Quản lý cài đặt & phát hiện môi trường
+│   ├── domain/                  # Models (Job, CropProfile, Status)
+│   ├── engine/                  # Động cơ VSF, Drive OCR, AI Translation
+│   ├── pipeline/                # Định nghĩa Task và luồng Pipeline
+│   └── queue/                   # Hàng chờ QueueManager & Worker Pool
 │
-├── autovsf_gui/                 # Desktop Application Layer
-│   ├── app.py                   # Main Desktop Application Entry Point
-│   └── components/              # Interactive CropSelector, Dashboard, Settings UI
+├── autovsf_gui/                 # Tầng giao diện đồ họa Desktop
+│   ├── app.py                   # Điểm khởi chạy ứng dụng GUI chính
+│   └── components/              # Các widget (CropSelector, Dashboard, Settings)
 │
 ├── requirements.txt
 └── README.md
@@ -43,11 +43,19 @@ autovsf-colab-gui/
 
 ---
 
-## Quick Start on Google Colab
+## Hướng dẫn nhanh trên Google Colab
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lionc2240/autovsf-colab-gui/blob/main/bootstrap/colab_bootstrap.ipynb)
+1. Nhấp vào nút **Open in Colab** ở trên hoặc mở file [`bootstrap/colab_bootstrap.ipynb`](https://colab.research.google.com/github/lionc2240/autovsf-colab-gui/blob/main/bootstrap/colab_bootstrap.ipynb) trong Google Colab.
+2. Chạy **Bước 1** để kết nối với Google Drive.
+3. Chạy **Bước 2** để cài đặt môi trường Ubuntu Desktop & phụ thuộc.
+4. Chạy **Bước 3** để khởi chạy Web Desktop. Mở đường link `noVNC` được in ra ở cuối cell để truy cập ứng dụng AutoVSF!
 
-1. Click the Colab logo above to open `bootstrap/colab_bootstrap.ipynb` in Google Colab.
-2. Run **Step 1** to mount Google Drive.
-3. Run **Step 2** to install system dependencies.
-4. Run **Step 3** to launch the Ubuntu Workstation. Open the printed `noVNC` URL to access the AutoVSF Desktop Application!
+---
+
+## Mở lại ứng dụng khi lỡ đóng
+
+- **Trường hợp đóng tab trình duyệt noVNC:** Nhấp lại vào đường link `noVNC` ở Bước 3 trong Colab để mở lại giao diện.
+- **Trường hợp đóng cửa sổ ứng dụng AutoVSF:** Mở **Terminal** trong màn hình Desktop noVNC và gõ:
+  ```bash
+  python3 -m autovsf_gui.app
+  ```
