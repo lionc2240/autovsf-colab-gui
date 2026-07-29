@@ -7,17 +7,17 @@ export TZ=Etc/UTC
 echo "keyboard-configuration keyboard-configuration/layoutcode string us" | sudo debconf-set-selections 2>/dev/null || true
 echo "keyboard-configuration keyboard-configuration/modelcode string pc105" | sudo debconf-set-selections 2>/dev/null || true
 
-echo -e "${CYAN}[1/5] Updating package list & installing XFCE / ttyd / tmux / noVNC desktop dependencies...${NC}"
+echo -e "${CYAN}[1/5] Updating package list & installing XFCE / ttyd / tmux / xclip / noVNC desktop dependencies...${NC}"
 sudo apt-get update -qq -y || true
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" \
-    xvfb xfce4 xfce4-goodies x11vnc novnc net-tools ttyd tmux \
+    xvfb xfce4 xfce4-goodies x11vnc novnc net-tools ttyd tmux xclip \
     ffmpeg libxss1 libnss3 libxtst6 libxrender1 libxcomposite1 \
     libasound2 libdbus-glib-1-2 libnuma1 libgtk-3-0 python3-tk python3-pip
 
 echo -e "${CYAN}[2/5] Setting up Python dependencies & yt-dlp...${NC}"
 pip install --quiet --no-cache-dir \
     watchdog google-api-python-client google-auth-oauthlib google-auth \
-    httplib2 opencv-python psutil Pillow gradio requests yt-dlp
+    httplib2 opencv-python psutil Pillow gradio requests yt-dlp ipywidgets
 
 echo -e "${CYAN}[3/5] Setting up VideoSubFinder & Legacy Libraries...${NC}"
 WORKDIR="/content/drive/MyDrive/AutoVSF"
